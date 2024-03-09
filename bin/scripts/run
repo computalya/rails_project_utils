@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# bin/run
+
+# Discover available commands dynamically within the Rails project
+def discover_commands
+  Dir.glob('bin/scripts/*').map { |file| File.basename(file) }
+end
+
+# Check if ARGV is empty
+if ARGV.empty?
+  puts "Usage: bin/run <command>"
+  puts "Available commands: #{discover_commands.join(', ')}"
+  exit 1  # Exit with an error code (optional)
+end
+
+# Get the command argument from the user
+command = ARGV[0].to_sym
+
+# Check if the command exists in the hash
+if discover_commands.include?(command.to_s)
+  # Execute the command using system
+  system("bin/scripts/#{command}")
+else
+  puts "Invalid command! Available commands are: #{discover_commands.join(', ')}"
+end

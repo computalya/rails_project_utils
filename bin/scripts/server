@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+function stop_server() {
+  echo "Stopping Rails server..."
+  bin/scripts/dockerdown
+  exit 0
+}
+
+trap stop_server INT
+
+set -e
+# binding=0.0.0.0 for docker setup
+# bin/rails server --binding=0.0.0.0
+
+output=$(rails runner "puts Rails.env.development?")
+if [ $? -eq 0 ]; then
+  bin/scripts/dockerup
+fi
+
+bin/rails server

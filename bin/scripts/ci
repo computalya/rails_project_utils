@@ -1,0 +1,23 @@
+# bin/app/ci
+#!/usr/bin/env bash
+
+set -e
+
+echo "[ bin/app/ci ] Running unit tests"
+bin/rails test
+
+echo "[ bin/app/ci ] Running system tests"
+bin/rails test:system
+
+echo "[ bin/app/ci ] Analyzing code for security vulnerabilities."
+echo "[ bin/app/ci ] Output will be in tmp/brakeman.html, which"
+echo "[ bin/app/ci ] can be opened in your browser."
+bundle exec brakeman -q -o tmp/brakeman.html
+
+echo "[ bin/app/ci ] Analyzing Ruby gems for"
+echo "[ bin/app/ci ] security vulnerabilities"
+bundle exec bundle audit check --update
+
+# echo "[ bin/app/ci ] for security vulnerabilities"
+
+echo "[ bin/app/ci ] Done"

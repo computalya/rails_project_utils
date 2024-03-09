@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Define function for consistency and reusability
+folderinfo() {
+  # Handle tab characters consistently
+  SIZE=$(du -hms . | awk '{print $1}')
+
+  # Count files directly with find (more efficient)
+  FILES=$(find . -type f | wc -l)
+
+  # Print formatted output with tab character explicitly included
+  printf "%s MB\t%s Files\n" "$SIZE" "$FILES"
+}
+
+# Run cleaning commands, piping output if desired
+BIN_RAILS="bin/rails"
+
+# Get initial folder information before cleaning
+before=$(folderinfo)
+
+echo "Cleaning assets, logs, and temporary files..."
+$BIN_RAILS assets:clean >/dev/null 2>&1 &  # Run in background, discard errors
+$BIN_RAILS log:clear >/dev/null 2>&1 &
+$BIN_RAILS tmp:clear >/dev/null 2>&1 &
+git gc >/dev/null 2>&1 &  # No piping as git gc doesn't output to stdout
+
+wait  # Wait for background processes to finish
+
+# Get final folder information after cleaning
+after=$(folderinfo)
+
+# Output results
+echo -e "\nFolder Information:"
+echo "-------------------"
+echo "Before Cleaning:"
+echo -e "\t$before"
+echo "After Cleaning:"
+echo -e "\t$after"
+
