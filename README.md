@@ -15,7 +15,12 @@ bin
 │   └── setup
 ```
 
-With this gem it makes it easier to install and maintain between many projects
+Using this gem simplifies the process of installing and maintaining these scripts across multiple projects, ensuring consistency and ease of management.
+
+### for more advanced version have look at:
+
+- https://github.com/casey/just
+- https://everydayrails.com/2024/02/24/rails-just-commands
 
 ## Installation
 
