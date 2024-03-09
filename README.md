@@ -53,7 +53,13 @@ gem build rails_project_utils.gemspec -o pkg/rails_project_utils-0.1.0.gem
 ### Installing and uninstalling local gem
 
 ```bash
-gem pkg/rails_project_utils-0.1.0.gem
+gem install pkg/rails_project_utils-0.1.0.gem
+```
+
+to uninstall:
+
+```bash
+gem uninstall rails_project_utils
 ```
 
 ## Contributing
