@@ -9,18 +9,17 @@ Gem::Specification.new do |spec|
   spec.email = ["gunduz.atilla@icloud.com"]
 
   spec.summary = "Collection of scripts to simplify setup, testing, and quality checks for Ruby on Rails projects."
+  spec.homepage = "https://github.com/computalya/rails_project_utils"
   spec.description = "A set of scripts accessible through `bin/run` to streamline setup, testing, and quality assurance processes for Ruby on Rails projects."
-  # spec.homepage = "https://github.com/computalya/rails_project_utils"
-
   spec.license = "MIT"
+
   spec.required_ruby_version = ">= 3.0.0"
 
-  spec.metadata["allowed_push_host"] = "https://rubygems.org"
-
-  # spec.metadata["homepage_uri"] = spec.homepage
-
+  spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/computalya/rails_project_utils"
   spec.metadata["changelog_uri"] = "https://github.com/computalya/rails_project_utils/blob/main/CHANGELOG.md"
+
+  # spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -31,19 +30,7 @@ Gem::Specification.new do |spec|
     end
   end
 
-  # Add 'install_script.rb' to the files list
-  # spec.files << "exe/install_script"
-
-  # spec.executables << 'install_script'
-
-
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
-
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
 end
