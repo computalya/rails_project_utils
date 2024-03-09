@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 # This script installs the custom scripts into a Ruby on Rails project
 
 require 'fileutils'

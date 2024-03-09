@@ -30,6 +30,13 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[bin/ test/ spec/ features/ .git .gitlab-ci.yml appveyor Gemfile])
     end
   end
+
+  # Add 'install_script.rb' to the files list
+  # spec.files << "exe/install_script"
+
+  # spec.executables << 'install_script'
+
+
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
