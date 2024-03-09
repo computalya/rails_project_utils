@@ -20,8 +20,7 @@ module RailsProjectUtils
         system('bundle install')
 
         say 'Uninstallation complete.'
-        say '***'
-        say 'Removing gems from Gemfile...'
+        say ''
         remove_from_gemfile('brakeman')
         remove_from_gemfile('rubycritic')
 
@@ -31,7 +30,7 @@ module RailsProjectUtils
 
       def remove_from_gemfile(gem_name)
         # gsub_file 'Gemfile', /^gem '#{gem_name}'\n/, ''
-        say "#{gem_name} was installed for ruby_project_utils. Use 'bundle remove <#{gem_name}>' to uninstall"
+        say "   #{gem_name} was installed for ruby_project_utils. Use 'bundle remove <#{gem_name}>' to uninstall"
       end
     end
   end
