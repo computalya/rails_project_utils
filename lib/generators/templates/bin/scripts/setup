@@ -6,8 +6,10 @@ require 'dotenv'
 APP_ROOT = File.expand_path("../..", __dir__)
 APP_NAME = File.basename(Dir.pwd)
 
+Dotenv.load('.rails_project_utils.env')
+
 def docker_enabled?
-  File.exist?("#{APP_ROOT}/docker-dev/.env")
+  ENV.key?('DOCKER_COMPOSE_PATH')
 end
 
 def system!(*args)
