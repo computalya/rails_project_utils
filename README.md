@@ -1,8 +1,26 @@
 # RailsProjectUtils
 
-TODO: Delete this and the text below, and describe your gem
+All my Ruby on Rails projects include same scripts:
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_project_utils`. To experiment with that code, run `bin/console` for an interactive prompt.
+```bash
+bin
+├── run
+├── scripts
+│   ├── ci
+│   ├── cleanup
+│   ├── dockerdown
+│   ├── dockerup
+│   ├── qualitycheck
+│   ├── server
+│   └── setup
+```
+
+With this gem it makes it easier to install and maintain between many projects
+
+## TODO
+
+- Put your Ruby code in the file `lib/rails_project_utils`.
+- To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
 
