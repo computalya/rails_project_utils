@@ -2,6 +2,9 @@
 require "fileutils"
 require 'dotenv'
 
+# unless File.exist?("config/database.yml")
+#   FileUtils.cp "config/database.yml.sample", "config/database.yml"
+# end
 ENV_FILE = File.expand_path("../../docker-dev/.env", __dir__)
 Dotenv.load(ENV_FILE)
 COMPOSE_PROJECT_NAME = ENV['COMPOSE_PROJECT_NAME']
@@ -21,32 +24,23 @@ def system!(*args)
 end
 
 def log(message)
-  puts "[bin/app/setup] #{message}"
+  puts "[bin/run] #{message}"
 end
 
 def help
   log "Useful commands:"
   log ""
-  log "  bin/app/run"
+  log "  bin/run server"
   log "    # run app locally"
   log ""
 
-  log " LOGRAGE_IN_DEVELOPMENT=true bin/app/run"
-  log "     # run app locally using"
-  log "     # production-like logging"
-  log ""
-
-  log "  bin/app/ci"
+  log "  bin/run ci"
   log "    # runs all tests and checks as CI would"
   log ""
+
   log "  bin/rails test"
   log "    # run non-system tests"
   log ""
-  log "  bin/rails test:system"
-  log "    # run system tests"
-  log ""
-  log "  bin/app/setup help"
-  log "    # show this help"
 end
 
 def remove_volume(volume_name)
@@ -122,18 +116,9 @@ def setup
 end
 
 FileUtils.chdir APP_ROOT do
-  # This script is a way to set up or update your development environment automatically.
-  # This script is idempotent, so that you can run it at any time and get an expectable outcome.
-  # Add necessary setup steps to this file.
-
   if ARGV[0] == "help"
     help
   else
     setup
   end
-
-  # puts "\n== Copying sample files =="
-  # unless File.exist?("config/database.yml")
-  #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
-  # end
 end
