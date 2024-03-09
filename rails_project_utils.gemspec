@@ -19,8 +19,6 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/computalya/rails_project_utils"
   spec.metadata["changelog_uri"] = "https://github.com/computalya/rails_project_utils/blob/main/CHANGELOG.md"
 
-  # spec.metadata["allowed_push_host"] = "https://rubygems.org"
-
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(__dir__) do
@@ -30,7 +28,8 @@ Gem::Specification.new do |spec|
     end
   end
 
-  spec.bindir = "exe"
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  # spec.metadata["allowed_push_host"] = "https://rubygems.org"
+  # spec.bindir = "exe"
+  # spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  # spec.require_paths = ["lib"]
 end
