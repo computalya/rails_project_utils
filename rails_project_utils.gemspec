@@ -28,6 +28,8 @@ Gem::Specification.new do |spec|
     end
   end
 
+  spec.post_install_message = "My test post-install message."
+
   # spec.metadata["allowed_push_host"] = "https://rubygems.org"
   # spec.bindir = "exe"
   # spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
