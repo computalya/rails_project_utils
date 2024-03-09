@@ -15,14 +15,16 @@ module RailsProjectUtils
         destination_scripts = Rails.root.join('bin', 'scripts')
         FileUtils.rm_rf(destination_scripts) if File.exist?(destination_scripts)
 
-        say 'Removing gems from Gemfile...'
-        remove_from_gemfile('brakeman')
-        remove_from_gemfile('rubycritic')
 
         say 'Removing dependencies...'
         system('bundle install')
 
         say 'Uninstallation complete.'
+        say '***'
+        say 'Removing gems from Gemfile...'
+        remove_from_gemfile('brakeman')
+        remove_from_gemfile('rubycritic')
+
       end
 
       private
