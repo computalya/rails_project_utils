@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-docker-compose --env-file docker-dev/.env -f docker-dev/docker-compose.yaml down
+# Check if DOCKER_COMPOSE_PATH is set
+if [[ -z "$DOCKER_COMPOSE_PATH" ]]; then
+  echo "Error: DOCKER_COMPOSE_PATH environment variable is not set."
+  exit 1  # Exit with non-zero code to indicate an error
+fi
+
+source .rails_project_utils.env
+docker-compose -f $DOCKER_COMPOSE_PATH down

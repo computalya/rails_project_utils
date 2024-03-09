@@ -2,7 +2,9 @@
 
 function stop_server() {
   echo "Stopping Rails server..."
-  bin/scripts/dockerdown
+  if [ -n "$DOCKER_COMPOSE_PATH" ]; then
+    bin/scripts/dockerdown
+  fi
   exit 0
 }
 
@@ -14,7 +16,11 @@ set -e
 
 output=$(rails runner "puts Rails.env.development?")
 if [ $? -eq 0 ]; then
-  bin/scripts/dockerup
+  if [[ -z "$DOCKER_COMPOSE_PATH" ]]; then
+    bin/rails server
+  else
+    bin/scripts/dockerup
+  fi
 fi
 
 bin/rails server
