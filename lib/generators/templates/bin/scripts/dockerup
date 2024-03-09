@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source .rails_project_utils.env
 
 # Check if DOCKER_COMPOSE_PATH is set
 if [[ -z "$DOCKER_COMPOSE_PATH" ]]; then
@@ -6,5 +7,4 @@ if [[ -z "$DOCKER_COMPOSE_PATH" ]]; then
   exit 1  # Exit with non-zero code to indicate an error
 fi
 
-source .rails_project_utils.env
 docker-compose -f $DOCKER_COMPOSE_PATH up -d

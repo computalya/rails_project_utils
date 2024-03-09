@@ -52,7 +52,6 @@ module RailsProjectUtils
         # Default options (can be customized)
         default_options = {
           variables: {
-            'COMPOSE_PROJECT_NAME' => File.basename(Dir.pwd),
             '# DOCKER_COMPOSE_PATH' => 'path-do-docker-compose.yaml'
           },
           overwrite: false  # Prevent accidental overwriting by default
