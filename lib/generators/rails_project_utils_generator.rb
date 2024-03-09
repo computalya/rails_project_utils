@@ -38,11 +38,46 @@ module RailsProjectUtils
           add_to_gemfile('bundler-audit')
         end
 
+        create_env_file
         say 'Installing dependencies...'
         system('bundle install')
       end
 
       private
+
+      def create_env_file
+        filename = '.rails_project_utils.env'
+        options = {}
+
+        # Default options (can be customized)
+        default_options = {
+          variables: {
+            'COMPOSE_PROJECT_NAME' => File.basename(Dir.pwd),
+            '# DOCKER_COMPOSE_PATH' => 'path-do-docker-compose.yaml'
+          },
+          overwrite: false  # Prevent accidental overwriting by default
+        }
+
+        # Merge user options with defaults
+        options = default_options.merge(options)
+
+        # Validate filename and create directory if needed
+        FileUtils.mkdir_p(File.dirname(filename)) unless Dir.exist?(File.dirname(filename))
+
+        # Create the file, handle potential overwrite
+        if File.exist?(filename) && !options[:overwrite]
+          raise "Error: File '#{filename}' already exists. Use :overwrite => true to proceed."
+        end
+
+        File.open(filename, 'w') do |file|
+          options[:variables].each do |key, value|
+            file.puts("#{key}=#{value}")  # Write each environment variable on a new line
+          end
+        end
+
+        puts "Environment file '#{filename}' created successfully."
+      end
+
 
       def gem_installed?(gem_name)
         `bundle show #{gem_name}`
