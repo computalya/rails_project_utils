@@ -5,6 +5,9 @@ require 'dotenv'
 # path to your application root.
 APP_ROOT = File.expand_path("../..", __dir__)
 
+Dotenv.load("${APP_ROOT}/docker-dev/.env")
+COMPOSE_PROJECT_NAME = ENV['COMPOSE_PROJECT_NAME']
+
 def docker_enabled?
   File.exist?("#{APP_ROOT}/docker-dev/.env")
 end
@@ -49,10 +52,6 @@ def remove_volume(volume_name)
 end
 
 def docker
-  ENV_FILE = File.expand_path("../../docker-dev/.env", __dir__)
-  Dotenv.load(ENV_FILE)
-  COMPOSE_PROJECT_NAME = ENV['COMPOSE_PROJECT_NAME']
-
   # run only on development environment
   unless `rails runner 'Rails.env.development?'`
     # exit setup if Docker Desktop is not running
