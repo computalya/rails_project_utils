@@ -28,7 +28,8 @@ module RailsProjectUtils
       private
 
       def remove_from_gemfile(gem_name)
-        gsub_file 'Gemfile', /^gem '#{gem_name}'\n/, ''
+        # gsub_file 'Gemfile', /^gem '#{gem_name}'\n/, ''
+        say 'rubycritic and brakeman was installed for ruby_project_utils. Use "bundle remove <gem name>" to uninstall'
       end
     end
   end
