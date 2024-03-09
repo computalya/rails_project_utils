@@ -30,7 +30,9 @@ bundle add authentication-zero
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+rails generate rails_project_utils
+```
 
 ## Development
 
