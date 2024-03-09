@@ -3,10 +3,10 @@ require "fileutils"
 require 'dotenv'
 
 # path to your application root.
-APP_ROOT = File.expand_path("..", __dir__)
+APP_ROOT = File.expand_path("../..", __dir__)
 
 def docker_enabled?
-  File.exist?("docker-dev/.env")
+  File.exist?("#{APP_ROOT}/docker-dev/.env")
 end
 
 def system!(*args)
