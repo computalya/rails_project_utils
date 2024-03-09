@@ -10,14 +10,14 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Collection of scripts to simplify setup, testing, and quality checks for Ruby on Rails projects."
   spec.description = "A set of scripts accessible through `bin/run` to streamline setup, testing, and quality assurance processes for Ruby on Rails projects."
-  spec.homepage = "https://github.com/computalya/rails_project_utils"
+  # spec.homepage = "https://github.com/computalya/rails_project_utils"
 
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
-  spec.metadata["homepage_uri"] = spec.homepage
+  # spec.metadata["homepage_uri"] = spec.homepage
 
   spec.metadata["source_code_uri"] = "https://github.com/computalya/rails_project_utils"
   spec.metadata["changelog_uri"] = "https://github.com/computalya/rails_project_utils/blob/main/CHANGELOG.md"
