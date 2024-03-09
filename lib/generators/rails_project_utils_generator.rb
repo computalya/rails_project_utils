@@ -33,6 +33,11 @@ module RailsProjectUtils
           add_to_gemfile('rubycritic')
         end
 
+        unless gem_installed?('bundler-audit')
+          say 'bundler-audit is not installed. Adding to Gemfile...'
+          add_to_gemfile('bundler-audit')
+        end
+
         say 'Installing dependencies...'
         system('bundle install')
       end
