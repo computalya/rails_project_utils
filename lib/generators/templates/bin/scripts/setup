@@ -6,9 +6,6 @@ require 'dotenv'
 APP_ROOT = File.expand_path("../..", __dir__)
 APP_NAME = File.basename(Dir.pwd)
 
-Dotenv.load("${APP_ROOT}/docker-dev/.env")
-COMPOSE_PROJECT_NAME = ENV['COMPOSE_PROJECT_NAME']
-
 def docker_enabled?
   File.exist?("#{APP_ROOT}/docker-dev/.env")
 end
@@ -60,13 +57,13 @@ def docker
   end
 
   # before removing volumes stop docker
-  result = `docker ps --filter "label=com.docker.compose.project=#{COMPOSE_PROJECT_NAME}" 2>&1`
+  result = `docker ps --filter "label=com.docker.compose.project=#{APP_NAME}" 2>&1`
   if $?.success?
     system! "cd ../ && bin/scripts/dockerdown"
   end
 
-  remove_volume("#{COMPOSE_PROJECT_NAME}_pg-data")
-  remove_volume("#{COMPOSE_PROJECT_NAME}_redis-data")
+  remove_volume("#{APP_NAME}_pg-data")
+  remove_volume("#{APP_NAME}_redis-data")
 
   system! "cd ../ && bin/scripts/dockerup"
 end
