@@ -4,6 +4,7 @@ require 'dotenv'
 
 # path to your application root.
 APP_ROOT = File.expand_path("../..", __dir__)
+APP_NAME = File.basename(Dir.pwd)
 
 Dotenv.load("${APP_ROOT}/docker-dev/.env")
 COMPOSE_PROJECT_NAME = ENV['COMPOSE_PROJECT_NAME']
@@ -71,6 +72,7 @@ def docker
 end
 
 def setup
+  puts "APP_NAME : #{APP_NAME}"
   if docker_enabled?
     log "Docker checks"
     docker
