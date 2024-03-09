@@ -22,6 +22,32 @@ module RailsProjectUtils
         Dir.glob(destination_scripts.join('*')).each do |script|
           FileUtils.chmod('+x', script)
         end
+
+        unless gem_installed?('brakeman')
+          say 'brakeman is not installed. Adding to Gemfile...'
+          add_to_gemfile('brakeman')
+        end
+
+        unless gem_installed?('rubycritic')
+          say 'rubycritic is not installed. Adding to Gemfile...'
+          add_to_gemfile('rubycritic')
+        end
+
+        say 'Installing dependencies...'
+        system('bundle install')
+
+        say 'You can now run "rails generate rails_project_utils" to use the rails_project_utils generator.'
+      end
+
+      private
+
+      def gem_installed?(gem_name)
+        `bundle show #{gem_name}`
+        $?.success?
+      end
+
+      def add_to_gemfile(gem_name)
+        gem gem_name, require: false
       end
     end
   end
