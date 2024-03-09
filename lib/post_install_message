@@ -1,0 +1,9 @@
+# lib/post_install_message
+puts <<-MESSAGE
+*************************************************
+*                                                 *
+*  Thank you for installing rails_project_utils! *
+*  You can now run 'rails generate rails_project_utils' to use the generator.  *
+*                                                 *
+*************************************************
+MESSAGE
