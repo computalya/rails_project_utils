@@ -4,5 +4,8 @@ require_relative "rails_project_utils/version"
 
 module RailsProjectUtils
   class Error < StandardError; end
-  # Your code goes here...
+
+  Gem.post_install do |installer|
+    puts "My post-install message for #{installer.spec.name}"
+  end
 end
