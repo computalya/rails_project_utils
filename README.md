@@ -50,6 +50,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 gem build rails_project_utils.gemspec -o pkg/rails_project_utils-0.1.0.gem
 ```
 
+### Installing and uninstalling local gem
+
+```bash
+gem pkg/rails_project_utils-0.1.0.gem
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rails_project_utils. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/rails_project_utils/blob/main/CODE_OF_CONDUCT.md).
