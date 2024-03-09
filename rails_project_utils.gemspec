@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
   end
 
   # spec.metadata["allowed_push_host"] = "https://rubygems.org"
-  s.post_install_message = %q{demo post install message}
+  spec.post_install_message = %q{demo post install message}
 end
