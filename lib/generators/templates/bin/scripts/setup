@@ -61,13 +61,13 @@ def docker
   # before removing volumes stop docker
   result = `docker ps --filter "label=com.docker.compose.project=#{APP_NAME}" 2>&1`
   if $?.success?
-    system! "cd ../ && bin/scripts/dockerdown"
+    system! "bin/scripts/dockerdown"
   end
 
   remove_volume("#{APP_NAME}_pg-data")
   remove_volume("#{APP_NAME}_redis-data")
 
-  system! "cd ../ && bin/scripts/dockerup"
+  system! "bin/scripts/dockerup"
 end
 
 def setup
