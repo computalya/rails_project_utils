@@ -35,8 +35,6 @@ module RailsProjectUtils
 
         say 'Installing dependencies...'
         system('bundle install')
-
-        say 'to uninstall generated scripts use "rails generate rails_project_utils"'
       end
 
       private

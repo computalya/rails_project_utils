@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rails_project_utils.gemspec
+
 require_relative "lib/rails_project_utils/version"
 
 Gem::Specification.new do |spec|
@@ -10,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Collection of scripts to simplify setup, testing, and quality checks for Ruby on Rails projects."
   spec.homepage = "https://github.com/computalya/rails_project_utils"
-  spec.description = "A set of scripts accessible through `bin/run` to streamline setup, testing, and quality assurance processes for Ruby on Rails projects."
+  spec.description = "A set of scripts accessible through `bin/run` command for Ruby on Rails projects."
   spec.license = "MIT"
 
   spec.required_ruby_version = ">= 3.0.0"
@@ -29,5 +31,4 @@ Gem::Specification.new do |spec|
   end
 
   # spec.metadata["allowed_push_host"] = "https://rubygems.org"
-  spec.post_install_message = %q{demo post install message}
 end
