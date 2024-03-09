@@ -30,7 +30,13 @@ rails generate rails_project_utils
 ## Usage
 
 ```bash
-rails generate rails_project_utils
+bin/run
+# Usage: bin/run <command>
+# Available commands: ci, cleanup, dockerdown, dockerup, qualitycheck, server, setup
+
+bin/run cleanup
+bin/run setup
+# etc.
 ```
 
 ## Uninstallation
